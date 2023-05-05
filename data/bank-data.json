@@ -1,0 +1,79 @@
+{
+	"bank": "Michael Bank",
+	"address": "222B Bakers Street, London",
+	"clients": [
+		{
+			"name": "Michael",
+			"vip": true,
+			"accounts": [
+				{
+					"currency":"GBP",
+					"amount": 5000
+				},{
+					"currency":"JPY",
+					"amount": 6000
+				},{
+					"currency":"USD",
+					"amount":790
+				}
+			]
+		},{
+			"name":"Alice",
+			"vip": true,
+			"accounts":[
+				{
+					"currency":"GBP",
+					"amount":400
+				},{
+					"currency":"USD",
+					"amount":0
+				}
+			]
+		},{
+			"name":"Bob",
+			"vip": true,
+			"accounts":[
+				{
+					"currency":"GBP",
+					"amount":10000
+				},{
+					"currency":"JPY",
+					"amount":500000
+				},{
+					"currency":"USD",
+					"amount": 4500
+				},{
+					"currency":"BTC",
+					"amount": 4
+				}
+			]
+		},{
+			"name":"Charlie",
+			"vip":false,
+			"accounts":[
+				{
+					"currency":"GBP",
+					"amount":400
+				},{
+					"currency":"BTC",
+					"amount":3
+				}
+			]
+		},{
+			"name": "Dave",
+			"vip": false,
+			"accounts": [
+				{
+					"currency": "GBP",
+					"amount": 590
+				},{
+					"currency": "EUR",
+					"amount": 600
+				},{
+					"currency": "USD",
+					"amount": 450
+				}
+			]
+		}
+	]
+}
