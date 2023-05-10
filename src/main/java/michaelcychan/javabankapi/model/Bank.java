@@ -1,7 +1,5 @@
 package michaelcychan.javabankapi.model;
 
-import michaelcychan.javabankapi.model.Client;
-
 import java.util.ArrayList;
 
 public class Bank {
@@ -29,5 +27,8 @@ public class Bank {
         return this.clients;
     }
 
+    public void addClient(Client newClient) {
+        this.clients.add(newClient);
+    }
 
 }

@@ -42,7 +42,9 @@ public class AccountController {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
             }
 
-            foundClient.get().createAccount(currency, amount);
+            Account newAccount = new Account(currency, amount);
+
+            foundClient.get().createAccount(newAccount);
 
             return ResponseEntity.status(HttpStatus.OK).body(foundClient.get().getAccountFromCurrency(currency));
 

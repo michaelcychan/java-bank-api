@@ -1,6 +1,5 @@
 package michaelcychan.javabankapi.model;
 
-import michaelcychan.javabankapi.model.Account;
 import org.springframework.dao.DuplicateKeyException;
 
 import java.util.ArrayList;
@@ -44,7 +43,11 @@ public class Client {
     }
 
     public void removeAccount(String currency) {
+        int originalLength = this.getNumberOfAccounts();
         this.accounts = this.accounts.stream().filter(acc -> !Objects.equals(acc.getCurrency(), currency)).collect(Collectors.toCollection(ArrayList::new));
+        if (originalLength == this.getNumberOfAccounts()) {
+            throw new IllegalArgumentException("Client not found");
+        }
     }
 
     public Account getAccountFromCurrency(String currency) {
@@ -56,16 +59,13 @@ public class Client {
         }
     }
 
-    public void createAccount(String currency, int amount){
-        if (amount < 0) {
-            throw new IllegalArgumentException("amount cannot be negative");
-        }
+    public void createAccount(Account newAccount){
         boolean alreadyExisted = false;
         for (Account account : this.accounts) {
-            if (Objects.equals(account.getCurrency(), currency)) {
+            if (Objects.equals(account.getCurrency(), newAccount.getCurrency())) {
                 throw new DuplicateKeyException("Currency already existed");
             }
         }
-        this.addAccount(new Account(currency, amount));
+        this.addAccount(newAccount);
     }
 }
