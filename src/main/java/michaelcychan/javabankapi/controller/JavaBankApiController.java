@@ -21,18 +21,22 @@ public class JavaBankApiController {
         this.bank = bank;
     }
 
+    @CrossOrigin
     @GetMapping("/greeting")
     public GreetingCounter greeting(@RequestParam(value = "name", defaultValue = "my friend") String name) {
         return new GreetingCounter(counter.incrementAndGet(), String.format(template, name));
     }
 
+    @CrossOrigin
     @GetMapping("/get-bank-detail")
     public BankDetails getBankDetails() {
         return new BankDetails(this.bank.getBank(), this.bank.getAddress(), this.bank.getClients().size());
     }
 
+    @CrossOrigin
     @GetMapping("/client/{name}")
     public ResponseEntity<Client> getClient(@PathVariable(name = "name") String clientName) {
+        System.out.printf("Getting Client name: %s\n", clientName);
         try {
             for (Client cli : bank.getClients()) {
                 if (Objects.equals(clientName, cli.getName())) {

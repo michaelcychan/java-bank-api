@@ -54,6 +54,7 @@ public class AccountController {
         }
     }
 
+    @CrossOrigin
     @PutMapping("/move-fund")
     public ResponseEntity<Account> changeFund(@RequestBody Map<String, Object> request) {
         try {
@@ -61,6 +62,8 @@ public class AccountController {
             String currency = (String) request.get("currency");
             Optional<Integer> deposit = Optional.ofNullable((Integer) request.get("deposit"));
             Optional<Integer> withdraw = Optional.ofNullable((Integer) request.get("withdraw"));
+
+            System.out.printf("currency is %s for %s\n", currency, clientName);
 
 
             if (!checkBank()) {
