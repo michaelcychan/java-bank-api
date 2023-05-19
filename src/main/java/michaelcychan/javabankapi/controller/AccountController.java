@@ -63,9 +63,6 @@ public class AccountController {
             Optional<Integer> deposit = Optional.ofNullable((Integer) request.get("deposit"));
             Optional<Integer> withdraw = Optional.ofNullable((Integer) request.get("withdraw"));
 
-            System.out.printf("currency is %s for %s\n", currency, clientName);
-
-
             if (!checkBank()) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
             }

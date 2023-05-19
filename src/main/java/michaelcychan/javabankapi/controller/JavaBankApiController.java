@@ -1,8 +1,11 @@
 package michaelcychan.javabankapi.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
+import michaelcychan.javabankapi.model.Account;
 import michaelcychan.javabankapi.model.Bank;
 import michaelcychan.javabankapi.model.Client;
 import michaelcychan.javabankapi.record.BankDetails;
@@ -31,6 +34,17 @@ public class JavaBankApiController {
     @GetMapping("/get-bank-detail")
     public BankDetails getBankDetails() {
         return new BankDetails(this.bank.getBank(), this.bank.getAddress(), this.bank.getClients().size());
+    }
+
+    @CrossOrigin
+    @GetMapping("/get-all-clients")
+    public ResponseEntity<List<String>> getAllClientNames() {
+        List<String> nameList = new ArrayList<>(){};
+        for (Client cli : bank.getClients()) {
+            nameList.add(cli.getName());
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(nameList);
+
     }
 
     @CrossOrigin
